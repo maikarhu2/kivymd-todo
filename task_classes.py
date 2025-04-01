@@ -22,6 +22,6 @@ class TodoItem(TwoLineAvatarIconListItem):
 
 class CreateTaskDialog(MDDialog):
     def __init__(self, **kwargs):
-        self.type = "custom" # ? mitä tekee
+        self.type = "custom" # alert, confirmation, simple
         self.content_cls = DialogContent()
         super().__init__(**kwargs)

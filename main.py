@@ -3,7 +3,7 @@
 # pip install kivymd
 
 from kivymd.app import MDApp
-from task_classes import CreateTaskDialog
+from task_classes import CreateTaskDialog, TodoItem
 
 class Main(MDApp):
     
@@ -14,7 +14,10 @@ class Main(MDApp):
     def close_dialog(self):
         self.task_dialog.dismiss()
 
-        
+    def add_task(self,task_textfield):
+        #print(task_textfield.text)
+        self.root.ids['container'].add_widget(TodoItem(text=task_textfield.text))
+        self.close_dialog()
 
 if __name__ == '__main__':
     Main().run()
