@@ -15,7 +15,7 @@ class Main(MDApp):
         self.task_dialog.dismiss()
 
     def add_task(self,task_textfield):
-        #print(task_textfield.text)
+        #This adds new task to the todolist
         self.root.ids['container'].add_widget(TodoItem(text=task_textfield.text))
         self.close_dialog()
 
