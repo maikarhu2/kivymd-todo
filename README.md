@@ -1,4 +1,4 @@
-1) Forkkaa projekti omaan githubiisi.
+1) Forkkaa projekti omaan githubiisi. Jos haluat tehdä esim. parityönä, lisää projektille collaboratorit
 2) Kloonaa forkattu projektisi koneellesi ja luo kloonattuun projektikansioon virtuaaliympäristö ja aktivoi se.
 3) Asenna tarvittavat paketit requirements.txt -tiedostosta seuraavalla komennolla:
    pip install -r requirements.txt
