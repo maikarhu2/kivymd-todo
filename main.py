@@ -4,10 +4,17 @@
 
 from kivymd.app import MDApp
 from task_classes import CreateTaskDialog, TodoItem
+from kivy.lang import Builder
 import os
 
+
 class Main(MDApp):
-    
+
+    def build(self):
+        # Load the .kv file layout
+        return Builder.load_file('main.kv')
+
+
     def show_create_task_dialog(self):
         self.task_dialog = CreateTaskDialog(title="CREATE TASK")
         self.task_dialog.open() 
@@ -28,17 +35,30 @@ class Main(MDApp):
         with open(file_name, "a") as file:
              for widget in self.root.ids['container'].children:
                   if isinstance(widget, TodoItem):
-                       print(widget.text)
                        file.write(widget.text + "\n")
 
         print(f"File saved to: {file_path}")
 
 #Read tasks when program opens
-    def read_tasks_file():
+    def read_tasks_file(self):
+
+        try:
+            with open("todo_texts.txt", "r") as file:
+                print("Reading previous tasks...")
+                texts = file.readlines()
+
+                for task_text in texts:
+                    task_text = task_text.strip()
+                    self.root.ids['container'].add_widget(TodoItem(text=task_text))
+        except:
+            print("Creating a new tasks file!")
         
-#Ensure this is the last step...
     def on_stop(self):
         self.write_tasks_file()
+
+    
+    def on_start(self):
+        self.read_tasks_file()
 
 if __name__ == '__main__':
     Main().run()
