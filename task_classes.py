@@ -25,3 +25,5 @@ class CreateTaskDialog(MDDialog):
         self.type = "custom" # alert, confirmation, simple
         self.content_cls = DialogContent()
         super().__init__(**kwargs)
+
+
